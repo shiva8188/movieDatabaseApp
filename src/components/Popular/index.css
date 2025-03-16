@@ -1,0 +1,9 @@
+.details {
+  display: flex;
+  flex-direction: column;
+}
+
+.movie {
+  list-style-type: none;
+  margin-bottom: 15px;
+}

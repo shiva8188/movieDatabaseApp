@@ -1,0 +1,44 @@
+.viewDetails {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.movieData {
+  display: flex;
+  flex-direction: column;
+}
+
+.genre {
+  padding-left: 0px;
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+}
+
+.genreItem {
+  margin-left: 7px;
+}
+
+.date-container {
+  display: flex;
+}
+
+.duration {
+  margin-left: 15px;
+}
+
+.castContainer {
+  padding-left: 0px;
+}
+
+.cast {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+}
+
+.castItem {
+  display: flex;
+  flex-direction: column;
+}

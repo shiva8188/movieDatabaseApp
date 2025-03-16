@@ -1,0 +1,33 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.heading {
+  margin-left: 10px;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+}
+
+.pages {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+}
+
+.page {
+  background-color: transparent;
+  border: none;
+}
+
+li {
+  margin-left: 5px;
+}
+
+input {
+  outline: none;
+}
