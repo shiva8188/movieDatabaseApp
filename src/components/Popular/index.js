@@ -27,17 +27,22 @@ class Popular extends Component {
 
   render() {
     const {movies} = this.state
-
     return (
-      <div>
+      <div className="movies-container">
         <ul className="details">
           {movies.map(each => (
             <li className="movie">
-              <img src={each.posterPath} alt={each.title} />
-              <h1>{each.title}</h1>
-              <p>{each.voteAverage}</p>
+              <img
+                src={`https://image.tmdb.org/t/p/w500${each.posterPath}`}
+                alt="Not found"
+                className="image"
+              />
+              <h1 className="title">{each.title}</h1>
+              <p className="rating">‪‪❤︎‬ {each.voteAverage}/10 Rating</p>
               <Link to={`/movie/${each.id}`}>
-                <button type="button">View Details</button>
+                <button type="button" className="viewButton">
+                  View Details
+                </button>
               </Link>
             </li>
           ))}

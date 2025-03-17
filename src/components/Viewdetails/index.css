@@ -1,12 +1,44 @@
 .viewDetails {
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  padding: 20px;
 }
 
 .movieData {
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .movieData {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+.viewDetails-image {
+  width: 170px;
+  border-radius: 5px;
+}
+
+@media (min-width: 768px) {
+  .viewDetails-image {
+    width: 250px;
+    margin-right: 15px;
+  }
+}
+
+.viewDetails-movie-title {
+  font-size: 17px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .viewDetails-movie-title {
+    font-size: 25px;
+    text-align: left;
+  }
 }
 
 .genre {
@@ -14,6 +46,13 @@
   display: flex;
   align-items: center;
   list-style-type: none;
+}
+
+.genre-heading {
+  font-weight: 500;
+  text-align: center;
+  font-size: 16px;
+  margin-left: 3px;
 }
 
 .genreItem {
@@ -24,21 +63,57 @@
   display: flex;
 }
 
+.overview {
+  font-size: 15px;
+  margin-top: 0px;
+}
+
 .duration {
   margin-left: 15px;
+  margin-bottom: 0px;
 }
 
 .castContainer {
   padding-left: 0px;
 }
 
-.cast {
+.cast-container {
+  padding-left: 0px;
   display: flex;
   flex-wrap: wrap;
   list-style-type: none;
 }
 
+.cast-heading {
+  font-size: 15px;
+}
+
+@media (min-width: 768px) {
+  .cast-heading {
+    font-size: 20px;
+  }
+}
+
 .castItem {
   display: flex;
   flex-direction: column;
+  margin-bottom: 7px;
+  width: 120px;
+}
+
+.cast-image {
+  width: 80px;
+  margin-bottom: 3px;
+  border-radius: 5px;
+}
+
+@media (min-width: 768px){
+  .cast-image{
+    width: 100px;
+  }
+}
+
+.cast-name {
+  font-size: 13px;
+  margin-top: 0px;
 }

@@ -42,33 +42,54 @@ class Viewdetails extends Component {
 
   render() {
     const {movieData, castData} = this.state
-    console.log(movieData)
+
     return (
       <div className="viewDetails">
         <div className="movieData">
-          <img src={movieData.image} alt="poster" width="10%" />
-          <h1>{movieData.name}</h1>
-          <ul className="genre">
-            Genre:{' '}
-            {movieData.genres !== undefined &&
-              movieData.genres.map(each => <li key={each.id}>{each.name},</li>)}
-          </ul>
-          <div className="date-container">
-            <p>Release Date: {movieData.releaseDate}</p>
-            <p className="duration">
-              Rating: {movieData.ratings} Duration:{movieData.duration}
+          <img
+            src={`https://image.tmdb.org/t/p/original${movieData.image}`}
+            alt="poster"
+            className="viewDetails-image"
+          />
+          <div>
+            <h1 className="viewDetails-movie-title">{movieData.name}</h1>
+            <ul className="genre">
+              <h1 className="genre-heading">Genre: </h1>
+              {movieData.genres !== undefined &&
+                movieData.genres.map(each => (
+                  <li key={each.id}>{each.name},</li>
+                ))}
+            </ul>
+            <div className="date-container">
+              <p>
+                <span className="genre-heading">Release Date: </span>{' '}
+                {movieData.releaseDate}
+              </p>
+              <p className="duration">
+                <span className="genre-heading">Rating: </span>
+                {movieData.ratings}/10{' '}
+                <span className="genre-heading">Duration: </span>
+                {movieData.duration} hrs
+              </p>
+            </div>
+            <p className="overview">
+              <span className="genre-heading">Overview: </span>
+              {movieData.overview}
             </p>
           </div>
-          <p>Overview: {movieData.overview}</p>
         </div>
         <div className="castContainer">
-          <h1>Cast:</h1>
-          <ul className="cast">
+          <h1 className="cast-heading">Cast:</h1>
+          <ul className="cast-container">
             {castData.map(each => (
               <li key={each.id} className="castItem">
-                <img src={each.image} alt={each.poster_path} width="20%" />
-                <p>Name: {each.name}</p>
-                <p>As: {each.cName}</p>
+                <img
+                  src={`https://image.tmdb.org/t/p/original${each.image}`}
+                  alt="not found"
+                  className="cast-image"
+                />
+                <p className="cast-name">Name: {each.name}</p>
+                <p className="cast-name">As: {each.cName}</p>
               </li>
             ))}
           </ul>

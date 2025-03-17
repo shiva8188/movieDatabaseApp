@@ -4,14 +4,10 @@ import {Component} from 'react'
 import './index.css'
 
 class Header extends Component {
-  state = {inputV: '', activeId: 'popular'}
+  state = {inputV: ''}
 
   onChangeValue = e => {
     this.setState({inputV: e.target.value}, this.onSubmit)
-  }
-
-  onChangeActiveId = e => {
-    this.setState({activeId: e.target.value})
   }
 
   onSubmit = () => {
@@ -21,59 +17,65 @@ class Header extends Component {
   }
 
   render() {
-    const {inputV, activeId} = this.state
+    const {inputV} = this.state
 
     return (
-      <nav className="header">
+      <nav className="header-container">
         <h1 className="heading">movieDB</h1>
-        <div className="search-container">
-          <input
-            type="text"
-            value={inputV}
-            placeholder="Search"
-            onChange={this.onChangeValue}
-          />
-          <button type="button" onClick={this.onSubmit}>
-            Search
-          </button>
+        <div className="search-category-container">
+          <div className="search-container">
+            <input
+              type="text"
+              value={inputV}
+              placeholder="Search"
+              onChange={this.onChangeValue}
+            />
+            <button
+              type="button"
+              onClick={this.onSubmit}
+              className="search-button"
+            >
+              Search
+            </button>
+          </div>
+          <ul className="pages">
+            <li>
+              <Link to="/">
+                <button
+                  type="button"
+                  className="page"
+                  onClick={this.onChangeActiveId}
+                  value="popular"
+                >
+                  Popular
+                </button>
+              </Link>
+            </li>
+            <li>
+              <Link to="/top-rated">
+                <button
+                  type="button"
+                  className="page"
+                  onClick={this.onChangeActiveId}
+                  value="topRated"
+                >
+                  Top Rated
+                </button>
+              </Link>
+            </li>
+            <li>
+              <Link to="/upcoming">
+                <button
+                  type="button"
+                  className="page"
+                  onClick={this.onChangeActiveId}
+                >
+                  Upcoming
+                </button>
+              </Link>
+            </li>
+          </ul>
         </div>
-        <ul className="pages">
-          <li>
-            <Link to="/">
-              <button
-                type="button"
-                className="page"
-                onClick={this.onChangeActiveId}
-                value="popular"
-              >
-                Popular
-              </button>
-            </Link>
-          </li>
-          <li>
-            <Link to="/top-rated">
-              <button
-                type="button"
-                className="page"
-                onClick={this.onChangeActiveId}
-                value="topRated"
-              >
-                Top Rated
-              </button>
-            </Link>
-          </li>
-          <li>
-            <Link to="/upcoming">
-              <button
-                type="button"
-                className="page"
-                onClick={this.onChangeActiveId}
-              >
-                Upcoming
-              </button>
-            </Link>
-          </li>
-        </ul>
       </nav>
     )
   }

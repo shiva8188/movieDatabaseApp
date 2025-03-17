@@ -1,6 +1,8 @@
 import {Component} from 'react'
 import {Link} from 'react-router-dom'
 
+import './index.css'
+
 class Searchable extends Component {
   state = {movies: []}
 
@@ -15,23 +17,35 @@ class Searchable extends Component {
       `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${inputValue}&page=1`,
     )
     const data = await response.json()
-    this.setState({movies: data.results})
+    const updated = data.results.map(each => ({
+      id: each.id,
+      posterPath: each.poster_path,
+      title: each.title,
+      voteAverage: each.vote_average,
+    }))
+    this.setState({movies: updated})
   }
 
   render() {
     const {movies} = this.state
-    console.log(movies)
 
     return (
       <div>
         <ul className="details">
           {movies.map(each => (
             <li className="movie">
-              <img src={each.poster_path} alt={each.poster_path} />
-              <h1>{each.title}</h1>
-              <p>{each.vote_average}</p>
+              <img
+                src={`https://image.tmdb.org/t/p/w500${each.posterPath}`}
+                alt="Not found"
+                width="50%"
+                className="image"
+              />
+              <h1 className="title">{each.title}</h1>
+              <p className="rating">‪‪❤︎‬ {each.voteAverage}/10 Rating</p>
               <Link to={`/movie/${each.id}`}>
-                <button type="button">View Details</button>
+                <button type="button" className="viewButton">
+                  View Details
+                </button>
               </Link>
             </li>
           ))}
