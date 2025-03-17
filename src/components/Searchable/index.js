@@ -4,17 +4,18 @@ import {Link} from 'react-router-dom'
 import './index.css'
 
 class Searchable extends Component {
-  state = {movies: []}
+  state = {movies: [], pageNumber: 1}
 
   componentDidMount() {
     this.getData()
   }
 
   getData = async () => {
+    const {pageNumber} = this.state
     const API_KEY = 'f6a522bcadcce7e0d970837819f15cd9'
     const {inputValue} = this.state
     const response = await fetch(
-      `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${inputValue}&page=1`,
+      `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${inputValue}&page=${pageNumber}`,
     )
     const data = await response.json()
     const updated = data.results.map(each => ({
@@ -31,11 +32,22 @@ class Searchable extends Component {
     onChangeInpForSearchRoute()
   }
 
+  onClickIncrease = () => {
+    this.setState(prev => ({pageNumber: prev.pageNumber + 1}), this.getData)
+  }
+
+  onClickDecrease = () => {
+    const {pageNumber} = this.state
+    if (pageNumber > 1) {
+      this.setState(prev => ({pageNumber: prev.pageNumber - 1}), this.getData)
+    }
+  }
+
   render() {
-    const {movies} = this.state
+    const {movies, pageNumber} = this.state
 
     return (
-      <div>
+      <div className="movies-container">
         <ul className="details">
           {movies.map(each => (
             <li className="movie">
@@ -59,6 +71,23 @@ class Searchable extends Component {
             </li>
           ))}
         </ul>
+        <div className="page-button-container">
+          <button
+            type="button"
+            className="page-button"
+            onClick={this.onClickDecrease}
+          >
+            Prev
+          </button>
+          <p className="pageNumber">{pageNumber}</p>
+          <button
+            type="button"
+            className="page-button"
+            onClick={this.onClickIncrease}
+          >
+            Next
+          </button>
+        </div>
       </div>
     )
   }
