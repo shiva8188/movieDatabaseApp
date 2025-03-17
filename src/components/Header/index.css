@@ -7,6 +7,17 @@
 .heading {
   margin-left: 10px;
 }
+.popular {
+  border-bottom: 1px solid orange;
+}
+
+.topRated {
+  border-bottom: 1px solid orange;
+}
+
+.upcoming {
+  border-bottom: 1px solid orange;
+}
 
 .search-container {
   display: flex;

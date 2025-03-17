@@ -4,10 +4,14 @@ import {Component} from 'react'
 import './index.css'
 
 class Header extends Component {
-  state = {inputV: ''}
+  state = {inputV: '', activeId: 'popular'}
 
   onChangeValue = e => {
     this.setState({inputV: e.target.value}, this.onSubmit)
+  }
+
+  onChangeActiveId = e => {
+    this.setState({activeId: e.target.value})
   }
 
   onSubmit = () => {
@@ -17,7 +21,7 @@ class Header extends Component {
   }
 
   render() {
-    const {inputV} = this.state
+    const {inputV, activeId} = this.state
 
     return (
       <nav className="header">
@@ -29,22 +33,44 @@ class Header extends Component {
             placeholder="Search"
             onChange={this.onChangeValue}
           />
-          <button onClick={this.onSubmit}>Search</button>
+          <button type="button" onClick={this.onSubmit}>
+            Search
+          </button>
         </div>
         <ul className="pages">
           <li>
             <Link to="/">
-              <button className="page">Popular</button>
+              <button
+                type="button"
+                className="page"
+                onClick={this.onChangeActiveId}
+                value="popular"
+              >
+                Popular
+              </button>
             </Link>
           </li>
           <li>
             <Link to="/top-rated">
-              <button className="page">Top Rated</button>
+              <button
+                type="button"
+                className="page"
+                onClick={this.onChangeActiveId}
+                value="topRated"
+              >
+                Top Rated
+              </button>
             </Link>
           </li>
           <li>
             <Link to="/upcoming">
-              <button className="page">Upcoming</button>
+              <button
+                type="button"
+                className="page"
+                onClick={this.onChangeActiveId}
+              >
+                Upcoming
+              </button>
             </Link>
           </li>
         </ul>

@@ -38,7 +38,7 @@ class TopRated extends Component {
               <h1>{each.title}</h1>
               <p>{each.voteAverage}</p>
               <Link to={`/movie/${each.id}`}>
-                <button>View Details</button>
+                <button type="button">View Details</button>
               </Link>
             </li>
           ))}

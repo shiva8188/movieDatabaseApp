@@ -31,7 +31,7 @@ class Searchable extends Component {
               <h1>{each.title}</h1>
               <p>{each.vote_average}</p>
               <Link to={`/movie/${each.id}`}>
-                <button>View Details</button>
+                <button type="button">View Details</button>
               </Link>
             </li>
           ))}
