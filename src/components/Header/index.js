@@ -7,17 +7,17 @@ class Header extends Component {
   state = {inputV: ''}
 
   onChangeValue = e => {
-    this.setState({inputV: e.target.value}, this.onSubmit)
+    const {onChangeInputValue} = this.props
+    onChangeInputValue(e.target.value)
   }
 
-  onSubmit = () => {
-    const {inputV} = this.state
-    const {onChangeInputValue} = this.props
-    onChangeInputValue(inputV)
+  onClickSearch = () => {
+    const {onClickedIsSearch} = this.props
+    onClickedIsSearch()
   }
 
   render() {
-    const {inputV} = this.state
+    const {inputValue} = this.props
 
     return (
       <nav className="header-container">
@@ -26,14 +26,14 @@ class Header extends Component {
           <div className="search-container">
             <input
               type="text"
-              value={inputV}
+              value={inputValue}
               placeholder="Search"
               onChange={this.onChangeValue}
             />
             <button
               type="button"
-              onClick={this.onSubmit}
               className="search-button"
+              onClick={this.onClickSearch}
             >
               Search
             </button>

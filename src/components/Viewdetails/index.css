@@ -107,8 +107,8 @@
   border-radius: 5px;
 }
 
-@media (min-width: 768px){
-  .cast-image{
+@media (min-width: 768px) {
+  .cast-image {
     width: 100px;
   }
 }

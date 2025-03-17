@@ -17,13 +17,31 @@ class App extends Component {
     this.setState({inputValue: value})
   }
 
-  render() {
+  onClickedIsSearch = () => {
     const {inputValue} = this.state
+    if (inputValue) {
+      this.setState({isSearch: true, inputValue: ''})
+    }
+  }
+
+  onChangeInpForSearchRoute = () => {
+    this.setState({isSearch: false})
+  }
+
+  render() {
+    const {inputValue, isSearch} = this.state
     return (
       <div>
-        <Header onChangeInputValue={this.onChangeInputValue} />
-        {inputValue ? (
-          <Searchable inputValue={inputValue} />
+        <Header
+          inputValue={inputValue}
+          onChangeInputValue={this.onChangeInputValue}
+          onClickedIsSearch={this.onClickedIsSearch}
+        />
+        {isSearch ? (
+          <Searchable
+            inputValue={inputValue}
+            onChangeInpForSearchRoute={this.onChangeInpForSearchRoute}
+          />
         ) : (
           <Switch>
             <Route exact path="/" component={Popular} />

@@ -26,6 +26,11 @@ class Searchable extends Component {
     this.setState({movies: updated})
   }
 
+  onClickView = () => {
+    const {onChangeInpForSearchRoute} = this.props
+    onChangeInpForSearchRoute()
+  }
+
   render() {
     const {movies} = this.state
 
@@ -43,7 +48,11 @@ class Searchable extends Component {
               <h1 className="title">{each.title}</h1>
               <p className="rating">‪‪❤︎‬ {each.voteAverage}/10 Rating</p>
               <Link to={`/movie/${each.id}`}>
-                <button type="button" className="viewButton">
+                <button
+                  type="button"
+                  className="viewButton"
+                  onClick={this.onClickView}
+                >
                   View Details
                 </button>
               </Link>
