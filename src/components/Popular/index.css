@@ -2,7 +2,6 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   padding: 2px;
 }
@@ -13,11 +12,6 @@
   justify-content: center;
   flex-wrap: wrap;
   margin-bottom: 0px;
-}
-@media (min-width: 768px) {
-  .details {
-    justify-content: flex-start;
-  }
 }
 
 .movie {
